@@ -12,12 +12,12 @@ import com.notification.service.model.Customer;
 public class CustomerNotificationService {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerNotificationService.class);
-
-    @Value("${kafka.topic.customer-topic}")
-    private String customerTopic;
+	/*
+	 * @Value("${kafka.topic.customer-topic}") private String customerTopic;
+	 */
     
     
-    @KafkaListener(topics = "${kafka.topic.customer-topic}", groupId = "notification-service-group")
+    @KafkaListener(topics = "customer-topic", groupId = "notification-service-group")
     public void consumeCustomer(Customer customer) {
     	System.out.println("-------------ConsumerFactory---------------");
         logger.info("Consumer received message. Customer: {}", customer);
